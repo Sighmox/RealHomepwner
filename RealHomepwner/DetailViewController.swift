@@ -31,7 +31,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // Formatter used in place of string interpolation to look better
+    // Formatter used in place of string interpolation to look better for the value
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -40,6 +40,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         return formatter
     }()
     
+    // Formatting for the date displayed in the detail view
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -47,6 +48,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         return formatter
     }()
     
+    // Populates the textfields with the information from the ItemStore
     override func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
         
@@ -56,6 +58,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         dateLabel.text = dateFormatter.string(from: item.dateCreated)
     }
     
+    // Updates the items in Item Store with the edited information
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         

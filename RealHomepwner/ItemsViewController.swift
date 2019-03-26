@@ -18,12 +18,14 @@ class ItemsViewController: UITableViewController {
         tableView.estimatedRowHeight = 65
     }
     
+    // The edit button in the navigation Bar
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         navigationItem.leftBarButtonItem = editButtonItem
     }
     
+    // Updates the view with the edited information
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
