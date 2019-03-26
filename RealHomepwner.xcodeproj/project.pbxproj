@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		792997B7224A8ECD00C85650 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792997B6224A8ECD00C85650 /* DetailViewController.swift */; };
 		7960812C221F054400FFC95B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7960812B221F054400FFC95B /* AppDelegate.swift */; };
 		79608131221F054400FFC95B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7960812F221F054400FFC95B /* Main.storyboard */; };
 		79608133221F054700FFC95B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79608132221F054700FFC95B /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		792997B6224A8ECD00C85650 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		79608128221F054400FFC95B /* RealHomepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealHomepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7960812B221F054400FFC95B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79608130221F054400FFC95B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				79608159221F060D00FFC95B /* ItemsViewController.swift */,
 				7960815F2225DE7700FFC95B /* ItemCell.swift */,
 				7960812F221F054400FFC95B /* Main.storyboard */,
+				792997B6224A8ECD00C85650 /* DetailViewController.swift */,
 				79608132221F054700FFC95B /* Assets.xcassets */,
 				79608134221F054700FFC95B /* LaunchScreen.storyboard */,
 				79608137221F054700FFC95B /* Info.plist */,
@@ -268,6 +271,7 @@
 				7960815A221F060D00FFC95B /* ItemsViewController.swift in Sources */,
 				7960815C221F075A00FFC95B /* Item.swift in Sources */,
 				7960815E221F0C8600FFC95B /* ItemStore.swift in Sources */,
+				792997B7224A8ECD00C85650 /* DetailViewController.swift in Sources */,
 				7960812C221F054400FFC95B /* AppDelegate.swift in Sources */,
 				796081602225DE7700FFC95B /* ItemCell.swift in Sources */,
 			);
