@@ -13,16 +13,21 @@ class ItemsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Get the height of the status bar
-        // Padding for the content to avoid overlap
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        
-        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 65
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        tableView.reloadData()
     }
     
     // This edits the word from "Delete" to "Terminate"
@@ -34,7 +39,7 @@ class ItemsViewController: UITableViewController {
     var itemStore: ItemStore!
     
     // The add button
-    @IBAction func addNewItem(_ sender: UIButton) {
+    @IBAction func addNewItem(_ sender: UIBarButtonItem) {
         // Create a new item and add it to the store
         let newItem = itemStore.createItem()
         
@@ -47,30 +52,15 @@ class ItemsViewController: UITableViewController {
         }
         
     }
-    // The edit button
-    @IBAction func toggleEditMode(_ sender: UIButton) {
-        // If you are currently in editing mode...
-        if isEditing {
-            // Change text of button to inform user of state
-            sender.setTitle("Edit", for: .normal)
-            
-            // Turn off editing mode
-            setEditing(false, animated: true)
-        } else {
-            // Change text of button to inform user of state
-            sender.setTitle("Done", for: .normal)
-            
-            // Enter editing mode
-            setEditing(true, animated: true)
-        }
-    }
+    
     
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
         return itemStore.allItems.count
         
-        
     }
+    
+    
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Get a new or recycled cell
@@ -136,6 +126,8 @@ class ItemsViewController: UITableViewController {
         itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
    
+    // This switches from the items view to the details view and
+    // indicates which item is being shown and gives and error if there isn't
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // If the triggered segue is the "showItem" segue
         switch segue.identifier {
@@ -154,5 +146,7 @@ class ItemsViewController: UITableViewController {
             preconditionFailure("Unexpected segue identifier.")
         }
     }
+    
+    
     
 }
