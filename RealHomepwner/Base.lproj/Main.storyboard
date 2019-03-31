@@ -89,7 +89,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tCf-zt-INk">
-                                <rect key="frame" x="8" y="72" width="359" height="587"/>
+                                <rect key="frame" x="8" y="72" width="359" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fb3-cN-ez1">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
@@ -144,7 +144,7 @@
                                                 <rect key="frame" x="50" y="0.0" width="309" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="iXR-7X-Ob3" id="Y5H-Lh-TDd"/>
                                                 </connections>
@@ -152,27 +152,46 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Date Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7G-nz-idh">
-                                        <rect key="frame" x="0.0" y="114" width="359" height="473"/>
+                                        <rect key="frame" x="0.0" y="114" width="359" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="VWX-sn-EQY">
+                                        <rect key="frame" x="0.0" y="142.5" width="359" height="400.5"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="T7S-xb-Hez" firstAttribute="leading" secondItem="a6y-xQ-9bE" secondAttribute="leading" id="D2S-py-ESA"/>
                                     <constraint firstItem="a6y-xQ-9bE" firstAttribute="leading" secondItem="QO5-YZ-Dt5" secondAttribute="leading" id="a6e-gK-MRw"/>
                                 </constraints>
                             </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4m-35-67a">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="556-b7-S00"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="8VT-X3-cVy">
+                                        <connections>
+                                            <action selector="takePicture:" destination="iXR-7X-Ob3" id="b6Q-1f-uXf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="k9k-RU-hbX" firstAttribute="bottom" secondItem="tCf-zt-INk" secondAttribute="bottom" constant="8" id="HWX-I0-g0s"/>
+                            <constraint firstItem="d4m-35-67a" firstAttribute="top" secondItem="tCf-zt-INk" secondAttribute="bottom" constant="8" id="4uh-6O-Kyc"/>
+                            <constraint firstItem="d4m-35-67a" firstAttribute="leading" secondItem="k9k-RU-hbX" secondAttribute="leading" id="Bt0-A0-xRv"/>
+                            <constraint firstItem="d4m-35-67a" firstAttribute="trailing" secondItem="k9k-RU-hbX" secondAttribute="trailing" id="DWV-pJ-qEv"/>
                             <constraint firstItem="tCf-zt-INk" firstAttribute="top" secondItem="k9k-RU-hbX" secondAttribute="top" constant="8" id="Qbb-cI-YXN"/>
                             <constraint firstItem="tCf-zt-INk" firstAttribute="leading" secondItem="k9k-RU-hbX" secondAttribute="leading" constant="8" id="fVA-rn-vqN"/>
                             <constraint firstItem="k9k-RU-hbX" firstAttribute="trailing" secondItem="tCf-zt-INk" secondAttribute="trailing" constant="8" id="h59-jc-mBB"/>
                             <constraint firstItem="k9k-RU-hbX" firstAttribute="trailing" secondItem="tCf-zt-INk" secondAttribute="trailing" constant="8" id="mzB-fV-93W"/>
                             <constraint firstItem="tCf-zt-INk" firstAttribute="leading" secondItem="k9k-RU-hbX" secondAttribute="leading" constant="8" id="rDi-OZ-g8P"/>
+                            <constraint firstItem="k9k-RU-hbX" firstAttribute="bottom" secondItem="d4m-35-67a" secondAttribute="bottom" id="rMm-nt-ruG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k9k-RU-hbX"/>
                         <connections>
@@ -181,6 +200,7 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="z7G-nz-idh" id="GfL-JL-x03"/>
+                        <outlet property="imageView" destination="VWX-sn-EQY" id="90U-ak-QTz"/>
                         <outlet property="nameField" destination="QeX-re-LJ6" id="USs-ma-IZW"/>
                         <outlet property="serialNumberField" destination="zxk-zP-Ayi" id="epq-AE-Oai"/>
                         <outlet property="valueField" destination="NGY-w7-Add" id="SVN-1R-B4y"/>

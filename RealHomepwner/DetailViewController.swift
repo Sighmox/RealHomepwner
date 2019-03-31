@@ -8,7 +8,9 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextFieldDelegate {
+class DetailViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    var textField: UITextField?
     
     // Tap to dismiss keyboard when background is tapped
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
@@ -20,16 +22,24 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Outlets for the detail information on items
+    @IBOutlet var imageView: UIImageView!
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var nameField: UITextField!
     @IBOutlet var valueField: UITextField!
     @IBOutlet var dateLabel: UILabel!
     
+    
     var item: Item! {
+        // Changes the Title of the navigation bar to the current item selected
         didSet {
             navigationItem.title = item.name
         }
+        
     }
+    
+    var imageStore: ImageStore!
+    
+    
     
     // Formatter used in place of string interpolation to look better for the value
     let numberFormatter: NumberFormatter = {
@@ -56,7 +66,16 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         serialNumberField.text = item.serialNumber
         valueField.text = numberFormatter.string(from: NSNumber(value: item.valueInDollars))
         dateLabel.text = dateFormatter.string(from: item.dateCreated)
+        
+        // Get the item key
+        let key = item.itemKey
+        
+        // If there is an associated image with the item display it on the image view
+        let imageToDisplay = imageStore.image(forKey: key)
+        imageView.image = imageToDisplay
     }
+    
+    
     
     // Updates the items in Item Store with the edited information
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,6 +94,40 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         } else {
             item.valueInDollars = 0
         }
+    }
+    
+    // The camera button
+    @IBAction func takePicture(_ sender: Any) {
+        
+        let imagePicker = UIImagePickerController()
+        
+        // iF the device has a camera, take a picture; otherwise,
+        // just pick from photo library
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        } else {
+            imagePicker.sourceType = .photoLibrary
+        }
+        
+        imagePicker.delegate = self
+        
+        // Place image picker on the screen
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+     
+        //Get picked image from info dictionary
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        
+        // Store the image in the ImageStore for the item's key
+        imageStore.setImage(image, forKey: item.itemKey)
+        
+        // Put that image on the screen in the image view
+        imageView.image = image
+        
+        // Take image picker off the screen you must call this dismiss method
+        dismiss(animated: true, completion: nil)
     }
     
 }
