@@ -177,6 +177,11 @@
                                             <action selector="takePicture:" destination="iXR-7X-Ob3" id="b6Q-1f-uXf"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Delete" id="wdP-3P-dcM">
+                                        <connections>
+                                            <action selector="deletePicture:" destination="iXR-7X-Ob3" id="YAa-0o-cIF"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
